@@ -34,6 +34,7 @@ public class FT_Contacts extends Utility_Functions{
             for (i = 1; i <= 1; i++) {
                 addContacts("First", "Last", "1234567890");
                 deleteContact("First");
+                deleteAllContact();
 
             }
         } catch (Exception e) {
@@ -120,7 +121,7 @@ public class FT_Contacts extends Utility_Functions{
 
     }
 
-    public void deleteAllContact(String fname)throws Exception{
+    public void deleteAllContact()throws Exception{
         UiObject delete = new UiObject(new UiSelector()
                 .description("Delete"));
         UiObject option_select_all = new UiObject(new UiSelector()

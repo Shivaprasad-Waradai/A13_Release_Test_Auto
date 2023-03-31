@@ -174,8 +174,11 @@ public class FT_Settings extends Utility_Functions {
         UiObject Media_volume = new UiObject(new UiSelector()
                 .resourceId("android:id/seekbar").description("Media volume"));
         UiObject Call_Volume = new UiObject(new UiSelector()
-                .resourceId("android:id/seekbar").text("Call volume"));
-
+                .resourceId("android:id/seekbar").description("Call volume"));
+        UiObject Ring_notification_volume = new UiObject(new UiSelector()
+                .resourceId("android:id/seekbar").description("Ring & notification volume"));
+        UiObject Alarm_volume = new UiObject(new UiSelector()
+                .resourceId("android:id/seekbar").description("Alarm volume"));
         go_to_idle();
         ufMenu_srch_App("Settings");
         Search_Settings.click();
@@ -185,14 +188,20 @@ public class FT_Settings extends Utility_Functions {
         Click_on_Searched_Setting.click();
         SV_Scroller.swipeDown(1);
         //Click on coordinaties to set Media volume
-        Media_volume.swipeLeft(7);
-        Media_volume.swipeRight(7);
-
-        Call_Volume.swipeLeft(7);
-        Call_Volume.swipeRight(7);
-
+        Media_volume.dragTo(750,735,1);
+        //Media_volume.setText("10");
+        Thread.sleep(3000);
+        Call_Volume.swipeLeft(1);
+        Call_Volume.swipeRight(1);
+        Thread.sleep(3000);
+        Ring_notification_volume.swipeLeft(1);
+        Ring_notification_volume.swipeRight(1);
+        Thread.sleep(3000);
+        Alarm_volume.swipeLeft(1);
+        Alarm_volume.swipeRight(1);
+        Thread.sleep(3000);
         //nw_internet.click();
-        Log.i(TAG, "* Flash light OFF");
+        Log.i(TAG, "* Set ring tone");
         device.pressBack();
         go_to_idle();
 

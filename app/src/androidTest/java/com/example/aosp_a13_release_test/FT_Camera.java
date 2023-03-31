@@ -31,12 +31,12 @@ public class FT_Camera extends Utility_Functions{
 
         int i;
         for(i=1;i<=1;i++){
-            //Take_Video(20000);
-            //Photo_Capture(2);
-            //Delete_video_captured();
-            //Delete_photo_Captured(2);
+            Take_Video(20000);
+            Photo_Capture(2);
+            Delete_video_captured();
+            Delete_photo_Captured(2);
             Photo_Capture_front_cam(2);
-            //Photo_Capture_with_options(2);
+            Photo_Capture_with_options(2);
         }
 
 
