@@ -179,6 +179,15 @@ public class FT_Settings extends Utility_Functions {
                 .resourceId("android:id/seekbar").description("Ring & notification volume"));
         UiObject Alarm_volume = new UiObject(new UiSelector()
                 .resourceId("android:id/seekbar").description("Alarm volume"));
+        UiObject Media_volume_Value = new UiObject(new UiSelector()
+                .resourceId("android:id/seekbar").description("Media volume"));
+        UiObject Call_Volume_Value = new UiObject(new UiSelector()
+                .resourceId("android:id/seekbar").description("Call volume"));
+        UiObject Ring_notification_Value = new UiObject(new UiSelector()
+                .resourceId("android:id/seekbar").description("Ring & notification volume"));
+        UiObject Alarm_volume_Value = new UiObject(new UiSelector()
+                .resourceId("android:id/seekbar").description("Alarm volume"));
+
         go_to_idle();
         ufMenu_srch_App("Settings");
         Search_Settings.click();
@@ -186,26 +195,98 @@ public class FT_Settings extends Utility_Functions {
         Type_to_search.setText("Sound & Vibration");
         Log.i(TAG, "* Search Sound & Vaibration");
         Click_on_Searched_Setting.click();
-        SV_Scroller.swipeDown(1);
+        //SV_Scroller.swipeDown(50);
         //Click on coordinaties to set Media volume
-        Media_volume.dragTo(750,735,1);
+        String get_TXT_value = Media_volume.getText();
+        Log.i(TAG, "* Media "+ Media_volume.getText());
+        double value = Double.parseDouble(get_TXT_value);
+        Log.i(TAG, "* Midea volume Value -" +value);
+        if (value<=7.0){
+            Media_volume.swipeRight(50);
+        }else {
+            Media_volume.swipeLeft(50);
+        }
+
         //Media_volume.setText("10");
         Thread.sleep(3000);
-        Call_Volume.swipeLeft(1);
-        Call_Volume.swipeRight(1);
+        get_TXT_value = Call_Volume.getText().toString();
+        Log.i(TAG, "* CALL "+ get_TXT_value);
+        value = Double.parseDouble(get_TXT_value);
+        Log.i(TAG, "* Call volume Value -" +value);
+        if (value<=3.0){
+            Call_Volume.swipeRight(50);
+        }else {
+            Call_Volume.swipeLeft(50);
+        }
+
         Thread.sleep(3000);
-        Ring_notification_volume.swipeLeft(1);
-        Ring_notification_volume.swipeRight(1);
+        get_TXT_value = Ring_notification_volume.getText();
+        Log.i(TAG, "* Ring "+ get_TXT_value);
+        value = Double.parseDouble(get_TXT_value);
+        Log.i(TAG, "* Ring tone volume Value -" +value);
+        if(value<=3.0){
+            Ring_notification_volume.swipeRight(50);
+        }else {
+            Ring_notification_volume.swipeLeft(50);
+        }
         Thread.sleep(3000);
-        Alarm_volume.swipeLeft(1);
-        Alarm_volume.swipeRight(1);
+        get_TXT_value = Alarm_volume.getText();
+        Log.i(TAG, "* Alarm "+ get_TXT_value);
+        value = Double.parseDouble(get_TXT_value);
+        Log.i(TAG, "* Alarm volume Value -" +value);
+        if (value<=3.0){
+            Alarm_volume.swipeRight(50);
+        }else{
+            Alarm_volume.swipeLeft(50);
+        }
+
         Thread.sleep(3000);
         //nw_internet.click();
         Log.i(TAG, "* Set ring tone");
         device.pressBack();
         go_to_idle();
-
     }
 
+    public void change_ringtone() throws Exception{
+        UiObject Search_Settings = new UiObject(new UiSelector()
+                .resourceId("com.android.settings:id/search_action_bar"));
+        UiObject Type_to_search = new UiObject(new UiSelector()
+                .resourceId("android:id/search_src_text"));
+        UiObject Click_on_Searched_Setting = new UiObject(new UiSelector()
+                .resourceId("android:id/title").text("Sound & vibration"));
+        UiObject Phone_Ringtone = new UiObject(new UiSelector()
+                .text("Phone ringtone"));
+        UiObject Pixel_Sounds = new UiObject(new UiSelector()
+                .text("Pixel Sounds"));
+        UiObject Crackle_4 = new UiObject(new UiSelector()
+                .resourceId("android.widget.RelativeLayout").index(4));
+        UiObject Ring_notification_volume = new UiObject(new UiSelector()
+                .resourceId("android:id/seekbar").description("Ring & notification volume"));
+        UiObject Alarm_volume = new UiObject(new UiSelector()
+                .resourceId("android:id/seekbar").description("Alarm volume"));
+        UiObject Media_volume_Value = new UiObject(new UiSelector()
+                .resourceId("android:id/seekbar").description("Media volume"));
+        UiObject Call_Volume_Value = new UiObject(new UiSelector()
+                .resourceId("android:id/seekbar").description("Call volume"));
+        UiObject Ring_notification_Value = new UiObject(new UiSelector()
+                .resourceId("android:id/seekbar").description("Ring & notification volume"));
+        UiObject Alarm_volume_Value = new UiObject(new UiSelector()
+                .resourceId("android:id/seekbar").description("Alarm volume"));
 
+        go_to_idle();
+        ufMenu_srch_App("Settings");
+        Search_Settings.click();
+        Log.i(TAG, "* Click on Search Settings");
+        Type_to_search.setText("Sound & Vibration");
+        Log.i(TAG, "* Search Sound & Vaibration");
+        Click_on_Searched_Setting.click();
+        Phone_Ringtone.click();
+        Pixel_Sounds.click();
+
+        Thread.sleep(3000);
+        //nw_internet.click();
+        Log.i(TAG, "* Set ring tone");
+        device.pressBack();
+        go_to_idle();
+    }
 }
