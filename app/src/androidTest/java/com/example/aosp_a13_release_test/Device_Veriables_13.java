@@ -139,25 +139,25 @@ public class Device_Veriables_13 {
 
     //********************** SETTINGS **********************
 
-    String AIT_13_SETTINGS_NW_internet_TXT = "Network and internet";
-    String AIT_13_SETTINGS_conneted_devices_TXT = "Connected devices";
-    String AIT_13_SETTINGS_apps_TXT = "Apps ";
-    String AIT_13_SETTINGS_notifications_TXT = "Notifications";
-    String AIT_13_SETTINGS_battery_TXT = "Battery";
-    String AIT_13_SETTINGS_storage_TXT = "Storage";
-    String AIT_13_SETTINGS_Snd_vib_TXT = "Sound and vibration";
-    String AIT_13_SETTINGS_display_TXT = "Display";
-    String AIT_13_SETTINGS_wallpaper_TXT = "Wallpaper";
-    String AIT_13_SETTINGS_accessibility_TXT = "Accessibility";
-    String AIT_13_SETTINGS_Security_TXT = "Security";
-    String AIT_13_SETTINGS_Privacy_TXT = "Privacy";
-    String AIT_13_SETTINGS_Location_TXT = "Location";
-    String AIT_13_SETTINGS_safety_emergency_TXT = "Safety and emergency";
-    String AIT_13_SETTINGS_paswrd_accs_TXT = "Passwords and accounts";
-    String AIT_13_SETTINGS_Digi_wellbeing_TXT = "Digital Wellbeing and parental controls";
-    String AIT_13_SETTINGS_Google_TXT = "Google";
-    String AIT_13_SETTINGS_system_TXT = "System";
-    String AIT_13_SETTINGS_About_phone_TXT = "About phone";
+    String AOSP_13_SETTINGS_NW_internet_TXT = "Network & internet";
+    String AOSP_13_SETTINGS_conneted_devices_TXT = "Connected devices";
+    String AOSP_13_SETTINGS_apps_TXT = "Apps ";
+    String AOSP_13_SETTINGS_notifications_TXT = "Notifications";
+    String AOSP_13_SETTINGS_battery_TXT = "Battery";
+    String AOSP_13_SETTINGS_storage_TXT = "Storage";
+    String AOSP_13_SETTINGS_Snd_vib_TXT = "Sound & vibration";
+    String AOSP_13_SETTINGS_display_TXT = "Display";
+    String AOSP_13_SETTINGS_wallpaper_TXT = "Wallpaper";
+    String AOSP_13_SETTINGS_accessibility_TXT = "Accessibility";
+    String AOSP_13_SETTINGS_Security_TXT = "Security";
+    String AOSP_13_SETTINGS_Privacy_TXT = "Privacy";
+    String AOSP_13_SETTINGS_Location_TXT = "Location";
+    String AOSP_13_SETTINGS_safety_emergency_TXT = "Safety & emergency";
+    String AOSP_13_SETTINGS_paswrd_accs_TXT = "Passwords & accounts";
+    String AOSP_13_SETTINGS_Digi_wellbeing_TXT = "Digital Wellbeing & parental controls";
+    String AOSP_13_SETTINGS_Google_TXT = "Google";
+    String AOSP_13_SETTINGS_system_TXT = "System";
+    String AOSP_13_SETTINGS_About_phone_TXT = "About phone";
 
 
     //**************************

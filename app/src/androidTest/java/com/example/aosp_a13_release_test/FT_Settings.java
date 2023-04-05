@@ -30,12 +30,13 @@ public class FT_Settings extends Utility_Functions {
     public void AOSP_13_Settings() throws Exception {
         try {
             int i;
-            for (i = 1; i <= 1; i++) {
+            for (i = 1; i <= 2; i++) {
                 //turnonFlightMode();
                 //Bluetooth_pair_unpair("SP things");
                 //Flash_on_off();
                 //display_brightness_adjust();
-                change_ringtone_Volume();
+                //change_ringtone_Volume();
+                change_ringtone();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,7 +63,6 @@ public class FT_Settings extends Utility_Functions {
         go_to_idle();
 
     }
-
     public void Bluetooth_pair_unpair(String BT_name) throws Exception {
         UiObject Connected_Devices = new UiObject(new UiSelector()
                 .text("Connected devices"));
@@ -111,7 +111,6 @@ public class FT_Settings extends Utility_Functions {
         go_to_idle();
 
     }
-
     public void Flash_on_off() throws Exception{
         UiObject Hm_screen_scroll_down = new UiObject(new UiSelector()
                 .className(AOSP_13_HOME_SCREEN_HOME_CN));
@@ -161,7 +160,7 @@ public class FT_Settings extends Utility_Functions {
         go_to_idle();
 
     }
-
+    //need to check the below to method codes 04/04/2023
     public void change_ringtone_Volume() throws Exception{
         UiObject Search_Settings = new UiObject(new UiSelector()
                 .resourceId("com.android.settings:id/search_action_bar"));
@@ -246,7 +245,6 @@ public class FT_Settings extends Utility_Functions {
         device.pressBack();
         go_to_idle();
     }
-
     public void change_ringtone() throws Exception{
         UiObject Search_Settings = new UiObject(new UiSelector()
                 .resourceId("com.android.settings:id/search_action_bar"));
@@ -256,16 +254,16 @@ public class FT_Settings extends Utility_Functions {
                 .resourceId("android:id/title").text("Sound & vibration"));
         UiObject Phone_Ringtone = new UiObject(new UiSelector()
                 .text("Phone ringtone"));
+        UiObject Ringtone_Crackle = new UiObject(new UiSelector()
+                .text("Crackle"));
         UiObject Pixel_Sounds = new UiObject(new UiSelector()
                 .text("Pixel Sounds"));
         UiObject Crackle_4 = new UiObject(new UiSelector()
-                .resourceId("android.widget.RelativeLayout").index(4));
-        UiObject Ring_notification_volume = new UiObject(new UiSelector()
-                .resourceId("android:id/seekbar").description("Ring & notification volume"));
-        UiObject Alarm_volume = new UiObject(new UiSelector()
-                .resourceId("android:id/seekbar").description("Alarm volume"));
-        UiObject Media_volume_Value = new UiObject(new UiSelector()
-                .resourceId("android:id/seekbar").description("Media volume"));
+                .text("Crackle"));
+        UiObject Copy_cat_3 = new UiObject(new UiSelector()
+                .text("Copycat"));
+        UiObject Save = new UiObject(new UiSelector()
+                .resourceId("com.google.android.soundpicker:id/save"));
         UiObject Call_Volume_Value = new UiObject(new UiSelector()
                 .resourceId("android:id/seekbar").description("Call volume"));
         UiObject Ring_notification_Value = new UiObject(new UiSelector()
@@ -278,12 +276,26 @@ public class FT_Settings extends Utility_Functions {
         Search_Settings.click();
         Log.i(TAG, "* Click on Search Settings");
         Type_to_search.setText("Sound & Vibration");
-        Log.i(TAG, "* Search Sound & Vaibration");
+        Log.i(TAG, "* Search Sound & Vibration");
         Click_on_Searched_Setting.click();
-        Phone_Ringtone.click();
-        Pixel_Sounds.click();
+        Log.i(TAG, "* Click on Sound & Vibration");
+        if (Ringtone_Crackle.exists())
+        {
+            Log.i(TAG, "* Ringtone Crackle exists and changing it to CopyCat ");
+            Phone_Ringtone.click();
+            Pixel_Sounds.click();
+            Copy_cat_3.click();
+            Thread.sleep(2000);
+        }else {
+            Log.i(TAG, "* Ringtone Crackle not exists and changing it to Crackle ");
+            Phone_Ringtone.click();
+            Pixel_Sounds.click();
+            Crackle_4.click();
+            Thread.sleep(2000);
+        }
 
         Thread.sleep(3000);
+        Save.click();
         //nw_internet.click();
         Log.i(TAG, "* Set ring tone");
         device.pressBack();
