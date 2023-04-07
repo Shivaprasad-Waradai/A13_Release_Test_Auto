@@ -57,7 +57,7 @@ public class Navigate_to_all_apps extends Utility_Functions{
                 openClose_Apps("Settings");
 
                  */
-                mst_Settings();
+
             Log.i(TAG, "* Test Ended");
 
             }
@@ -75,7 +75,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
             int i;
             Log.i(TAG, "* Test Started");
             for (i = 1; i <= 1; i++) {
-                mst_Settings();
+                //mst_Settings();
+                mst_Clock();
                 Log.i(TAG, "* Test Ended");
 
             }
@@ -93,7 +94,7 @@ public class Navigate_to_all_apps extends Utility_Functions{
             int i;
             Log.i(TAG, "* Monkey run test started");
             for (i = 1; i <= 1; i++) {
-                monkey_run();
+                //monkey_run();
                 Log.i(TAG, "* Monkey run Test Ended");
 
             }
@@ -249,51 +250,43 @@ public class Navigate_to_all_apps extends Utility_Functions{
     }
     public void mst_Clock() throws Exception{
         try{
+            go_to_idle();
 
             ufMenu_srch_App("Clock");
-
-
             UiObject tab_Clock = new UiObject(new UiSelector()
-                    .className(CLOCK_MAIN_TABS_className).index(1));
+                    .text("Clock"));
             tab_Clock.click();
             System.out.println("Clicked on Clock Tab");
 
-            device.pressBack();
-            device.pressHome();
-            ufMenu_srch_App("Clock");
-
             UiObject tab_Alarm = new UiObject(new UiSelector()
-                    .className(CLOCK_MAIN_TABS_className).index(0));
+                    .text("Alarm"));
             tab_Alarm.click();
             System.out.println("Clicked on Alarm Tab");
 
-            device.pressBack();
-            device.pressHome();
-            ufMenu_srch_App("Clock");
+
+
 
             UiObject tab_Timer = new UiObject(new UiSelector()
-                    .className(CLOCK_MAIN_TABS_className).index(2));
+                    .text("Timer"));
             tab_Timer.click();
             System.out.println("Clicked on Timer Tab");
 
-            device.pressBack();
-            device.pressHome();
-            ufMenu_srch_App("Clock");
-
             UiObject tab_Stopwatch = new UiObject(new UiSelector()
-                    .className(CLOCK_MAIN_TABS_className).index(3));
+                    .text("Stopwatch"));
             tab_Stopwatch.click();
             System.out.println("Clicked on Stop Watch Tab");
 
+
+            UiObject tab_Bed_time = new UiObject(new UiSelector()
+                    .text("Bedtime"));
+            tab_Bed_time.click();
             device.pressBack();
-            device.pressHome();
-            ufMenu_srch_App("Clock");
 
             UiObject tab_More_Opt = new UiObject(new UiSelector()
-                    .className(CLOCK_TAB_MORE_OPT_className).description(CLOCK_MORE_OPT_contentDescription));
+                    .description("More options"));
             tab_More_Opt.click();
             UiObject more_Opt_ScreenSaver = new UiObject(new UiSelector()
-                    .className(CLOCK_MORE_OPT_DROPDOWN_className).index(0));
+                    .text("Screen saver"));
             more_Opt_ScreenSaver.click();
             System.out.println("Clicked on Screen Saver Option");
 
@@ -303,27 +296,58 @@ public class Navigate_to_all_apps extends Utility_Functions{
 
             tab_More_Opt.click();
             UiObject more_Opt_Settings = new UiObject(new UiSelector()
-                    .className(CLOCK_MORE_OPT_DROPDOWN_className).index(1));
+                    .text("Settings"));
             more_Opt_Settings.click();
             System.out.println("Clicked on Setting Option");
             device.pressBack();
 
             tab_More_Opt.click();
-            UiObject more_Opt_Send_Feedback = new UiObject(new UiSelector()
-                    .className(CLOCK_MORE_OPT_DROPDOWN_className).index(2));
-            more_Opt_Send_Feedback.click();
+            UiObject more_Opt_Privacy_policy = new UiObject(new UiSelector()
+                    .text("Privacy policy"));
+            more_Opt_Privacy_policy.click();
             System.out.println("Clicked on Send Feedback Option");
             device.pressBack();
             Thread.sleep(2000);
             device.pressBack();
 
             tab_More_Opt.click();
+            UiObject more_Opt_Hide_sleep_sounds = new UiObject(new UiSelector()
+                    .text("Hide sleep sounds"));
+            more_Opt_Hide_sleep_sounds.click();
+            System.out.println("Clicked on Help Option");
+
+            device.pressBack();
+            tab_More_Opt.click();
+            UiObject more_Opt_Show_recent_activity = new UiObject(new UiSelector()
+                    .text("Show recent activity"));
+            more_Opt_Show_recent_activity.click();
+            System.out.println("Clicked on Help Option");
+            device.pressBack();
+
+
+            tab_More_Opt.click();
             UiObject more_Opt_Help = new UiObject(new UiSelector()
-                    .className(CLOCK_MORE_OPT_DROPDOWN_className).index(3));
+                    .text("Help"));
             more_Opt_Help.click();
             System.out.println("Clicked on Help Option");
             device.pressBack();
-            device.pressHome();
+
+
+            tab_More_Opt.click();
+            UiObject more_Opt_Send_feedback = new UiObject(new UiSelector()
+                    .text("Send feedback"));
+            more_Opt_Send_feedback.click();
+            System.out.println("Clicked on Help Option");
+            device.pressBack();
+
+
+            tab_More_Opt.click();
+            UiObject more_Opt_Show_upcoming_events = new UiObject(new UiSelector()
+                    .text("Show recent activity"));
+            more_Opt_Show_upcoming_events.click();
+            System.out.println("Clicked on Help Option");
+            device.pressBack();
+            go_to_idle();
 
             System.out.println("**********************mst_Clock PASSED********************");
 
@@ -438,51 +462,48 @@ public class Navigate_to_all_apps extends Utility_Functions{
             ufMenu_srch_App("Messages");
 
             UiObject msg_Create_New_Msg = new UiObject(new UiSelector()
-                    .className(MSG_MORE_OPT_className).index(1));
+                    .resourceId("com.google.android.apps.messaging:id/start_chat_fab"));
             msg_Create_New_Msg.click();
 
             device.pressBack();
 
 
             UiObject msg_More_Opt = new UiObject(new UiSelector()
-                    .className(MSG_MORE_OPT_className).description(MSG_MORE_OPT_contentDescription));
+                    .description("More Options"));
             msg_More_Opt.click();
 
 
             UiObject msg_More_Opt_Settings = new UiObject(new UiSelector()
-                    .className(MSG_MORE_OPT_LIST_className).index(2));
+                    .text("Starred"));
             msg_More_Opt_Settings.click();
             device.pressBack();
             msg_More_Opt.click();
 
             UiObject msg_More_Opt_Archived = new UiObject(new UiSelector()
-                    .className(MSG_MORE_OPT_LIST_className).index(0));
+                    .text("Archived"));
             msg_More_Opt_Archived.click();
             device.pressBack();
             msg_More_Opt.click();
 
 
             UiObject msg_More_Opt_Blocked_Contacts = new UiObject(new UiSelector()
-                    .className(MSG_MORE_OPT_LIST_className).index(1));
+                    .text("Spam & blocked"));
             msg_More_Opt_Blocked_Contacts.click();
             device.pressBack();
             msg_More_Opt.click();
 
 
-            UiObject msg_More_Opt_Help = new UiObject(new UiSelector()
-                    .className(MSG_MORE_OPT_LIST_className).index(3));
-            msg_More_Opt_Help.click();
+            UiObject msg_More_Opt_Theme = new UiObject(new UiSelector()
+                    .text("Choose theme"));
+            msg_More_Opt_Theme.click();
             device.pressBack();
-            device.pressHome();
-
-
-            System.out.println("************************* Application found & PASSED **************************");
+            go_to_idle();
 
         }catch (Exception e){
             e.printStackTrace();
-            System.out.println("************************* Application Not found & FAILED **************************");
             device.pressBack();
-            device.pressHome();
+            go_to_idle();
+
 
         }
     }

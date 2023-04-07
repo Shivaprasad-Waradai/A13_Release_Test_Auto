@@ -32,14 +32,13 @@ public class FT_Contacts extends Utility_Functions{
         try {
             int i;
             for (i = 1; i <= 1; i++) {
-                addContacts("First", "Last", "1234567890");
-                deleteContact("First");
+                addContacts("Nokia", "Android", "0000000013");
+                editContact("Nokia","AOSP");
+                deleteContact("AOSP "+"Android");
                 deleteAllContact();
-
             }
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 
@@ -88,7 +87,53 @@ public class FT_Contacts extends Utility_Functions{
         UiObject delete = new UiObject(new UiSelector()
                 .text("Delete"));
         UiObject popup_delete = new UiObject(new UiSelector()
+                .text("Move to Trash"));
+        UiObject No_contacts_yet = new UiObject(new UiSelector()
+                .text("No contacts yet"));
+        UiObject No_results = new UiObject(new UiSelector()
+                .text("No results"));
+        ufMenu_srch_App("Contacts");
+        if (No_contacts_yet.exists()){
+            Log.i(TAG, "No Contacts available to delete");
+        }else {
+            SrchCntct.click();
+            Log.i(TAG,"* Go to Search Contact");
+            EnterCntatName.legacySetText(fname);
+            Log.i(TAG,"* Enter Contact name to Search :" + fname);
+            if (No_results.exists()){
+                Log.i(TAG,"No results found for the searched contact : " + fname);
+            }else if(first_floating_contcat.getText().equals(fname)) {
+                first_floating_contcat.click();
+                Log.i(TAG,"* Select 1st Floating Contact in Search list");
+                More_opt.click();
+                Log.i(TAG,"* Click on More Option in selected contact");
+                delete.click();
+                Log.i(TAG,"* Click on Delete");
+                popup_delete.click();
+                Log.i(TAG,"* Again click on Move to trash");
+            }else{
+                Log.i(TAG, "No Matching Contacts available to delete");
+            }
+        }
+        device.pressBack();
+        go_to_idle();
+
+    }
+    public void editContact(String fname, String newFname)throws Exception{
+        UiObject SrchCntct = new UiObject(new UiSelector()
+                .text(AOSP_13_CONTACTS_search_cntcts_TXT));
+        UiObject EnterCntatName = new UiObject(new UiSelector()
+                .resourceId(AOSP_13_CONTACTS_search_enter_cntcts_RID));
+        UiObject first_floating_contcat = new UiObject(new UiSelector()
+                .resourceId(AOSP_13_CONTACTS_Search_floating_contact_RID).index(1).textContains(fname));
+        UiObject Fname = new UiObject(new UiSelector()
+                .text(fname));
+        UiObject Edit_contact = new UiObject(new UiSelector()
+                .description("Edit contact"));
+        UiObject delete = new UiObject(new UiSelector()
                 .text("Delete"));
+        UiObject Save = new UiObject(new UiSelector()
+                .text("Save"));
         UiObject No_contacts_yet = new UiObject(new UiSelector()
                 .text("No contacts yet"));
         UiObject No_results = new UiObject(new UiSelector()
@@ -106,21 +151,20 @@ public class FT_Contacts extends Utility_Functions{
             }else {
                 first_floating_contcat.click();
                 Log.i(TAG,"* Select 1st Floating Contact in Search list");
-                More_opt.click();
+                Edit_contact.click();
                 Log.i(TAG,"* Click on More Option in selected contact");
-                delete.click();
+                //Fname.clearTextField();
+                Fname.setText(newFname);
                 Log.i(TAG,"* Click on Delete");
-                popup_delete.click();
+                Save.click();
                 Log.i(TAG,"* Again on Delete to Confirm");
             }
-
         }
 
         device.pressBack();
         go_to_idle();
 
     }
-
     public void deleteAllContact()throws Exception{
         UiObject delete = new UiObject(new UiSelector()
                 .description("Delete"));
