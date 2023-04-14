@@ -40,7 +40,6 @@ public class FT_Settings extends Utility_Functions {
             }
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 
@@ -51,7 +50,6 @@ public class FT_Settings extends Utility_Functions {
         UiObject Airplane_mode = new UiObject(new UiSelector()
                 .text("Airplane mode"));
         ufMenu_srch_App("Settings");
-
         nw_internet.click();
         Log.i(TAG, "* Network & internet");
         Airplane_mode.click();
@@ -61,7 +59,6 @@ public class FT_Settings extends Utility_Functions {
         Log.i(TAG, "* click Airplane mode to turn off");
         device.pressBack();
         go_to_idle();
-
     }
     public void Bluetooth_pair_unpair(String BT_name) throws Exception {
         UiObject Connected_Devices = new UiObject(new UiSelector()
@@ -82,7 +79,6 @@ public class FT_Settings extends Utility_Functions {
                 .text("FORGET DEVICE"));
 
         ufMenu_srch_App("Settings");
-
         Connected_Devices.click();
         Log.i(TAG, "* click Connected Devices");
         Pair_new_device.click();
@@ -160,7 +156,6 @@ public class FT_Settings extends Utility_Functions {
         go_to_idle();
 
     }
-    //need to check the below to method codes 04/04/2023
     public void change_ringtone_Volume() throws Exception{
         UiObject Search_Settings = new UiObject(new UiSelector()
                 .resourceId("com.android.settings:id/search_action_bar"));

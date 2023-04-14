@@ -23,6 +23,8 @@ public class Device_Variables {
     String AOSP_13_HOME_SCREEN_HOME_CN = "android.view.View"; //TXT - Home
     String AOSP_13_HOME_SCREEN_WRKSPACE_RID = "com.google.android.apps.nexuslauncher:id/workspace";
     String AOSP_13_APP_MENU_G_SEARCH_RID = "com.google.android.apps.nexuslauncher:id/search_container_all_apps";
+
+    String AOSP_13_N6_1_APP_MENU_SEARCH_RID = "com.android.launcher3:id/search_container_all_apps";
     String AOSP_13_APP_MENU_G_SEARCH_INPUT_RID = "com.google.android.apps.nexuslauncher:id/input"; // TXT - Search apps, web and more
 
     //*********************Android 13 AOSP CAMERA **************************

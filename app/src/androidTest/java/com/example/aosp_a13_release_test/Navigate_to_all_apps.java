@@ -55,22 +55,16 @@ public class Navigate_to_all_apps extends Utility_Functions{
                 openClose_Apps("Messages");
                 openClose_Apps("Phone");
                 openClose_Apps("Settings");
-
                  */
-
             Log.i(TAG, "* Test Ended");
-
             }
-
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.d(TAG, "* Test Failed...");
             throw new AssertionFailedError();
         }
     }
     @Test
     public void Mst_Manu_structure() throws Exception {
-
         try {
             int i;
             Log.i(TAG, "* Test Started");
@@ -78,11 +72,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
                 //mst_Settings();
                 mst_Clock();
                 Log.i(TAG, "* Test Ended");
-
             }
-
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.d(TAG, "* Test Failed...");
             throw new AssertionFailedError();
         }
@@ -96,11 +87,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
             for (i = 1; i <= 1; i++) {
                 //monkey_run();
                 Log.i(TAG, "* Monkey run Test Ended");
-
             }
-
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.d(TAG, "* Test Failed...");
             throw new AssertionFailedError();
         }
@@ -909,3 +897,5 @@ public class Navigate_to_all_apps extends Utility_Functions{
     }
 
 }
+
+

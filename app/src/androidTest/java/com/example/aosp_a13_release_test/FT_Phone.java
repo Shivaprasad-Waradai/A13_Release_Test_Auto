@@ -10,9 +10,7 @@ import org.junit.Test;
 
 public class FT_Phone extends Utility_Functions{
     private UiDevice device;
-
     private static final String TAG = "TEST";
-
     @Before
     public void setUp() throws Exception {
 
@@ -23,18 +21,17 @@ public class FT_Phone extends Utility_Functions{
             return;
         }
     }
-
     @Test
     public void AOSP_13_dial_a_number() throws Exception {
         try {
             int i;
             for (i = 1; i <= 1; i++) {
-                dial_a_number_n_call("9945994183");
-                dial_a_number_n_save("9876543210", "firstname", "lastname");
+                //dial_a_number_n_call("9945994183");
+              //  dial_a_number_n_save("9876543210", "Kallappa", "Badami");
+                Search_contact_n_call("Kallappa");
             }
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 
@@ -45,24 +42,20 @@ public class FT_Phone extends Utility_Functions{
                 .resourceId("com.google.android.dialer:id/dialpad_voice_call_button"));
 
         ufMenu_srch_App("Phone");
-
         dialer.click();
         int j = PhoneNo.length();
         for (int i = 0; i <= j - 1; i++) {
-
             String c1 = String.valueOf(PhoneNo.charAt(i));
-            Log.i(TAG, "* digit " + c1);
             UiObject dial_number = new UiObject(new UiSelector()
                     .resourceId("com.google.android.dialer:id/dialpad_key_number").text(c1));
             dial_number.click();
         }
+        Log.i(TAG, "* Phone Number " + PhoneNo);
         Call.click();
         Log.i(TAG,"* Click ON CALL");
         device.pressBack();
         go_to_idle();
-
     }
-
     public void dial_a_number_n_save(String PhoneNo, String fname, String lname) throws Exception{
         UiObject dialer = new UiObject(new UiSelector()
                 .resourceId(AIT_13_PHONE_Dialer_RID));
@@ -79,13 +72,12 @@ public class FT_Phone extends Utility_Functions{
         dialer.click();
         int j = PhoneNo.length();
         for (int i = 0; i <= j - 1; i++) {
-
             String c1 = String.valueOf(PhoneNo.charAt(i));
-            Log.i(TAG, "* digit " + c1);
             UiObject dial_number = new UiObject(new UiSelector()
                     .resourceId("com.google.android.dialer:id/dialpad_key_number").text(c1));
             dial_number.click();
         }
+        Log.i(TAG, "* digit " +PhoneNo);
         Create_Contact.click();
         Log.i(TAG,"* Click on Create Contact");
         Fname.legacySetText(fname);
@@ -94,9 +86,48 @@ public class FT_Phone extends Utility_Functions{
         Log.i(TAG,"* Enter Last Name");
         Save.click();
         Log.i(TAG,"* Click ON Save");
-
         device.pressBack();
         go_to_idle();
+    }
+    public void Search_contact_n_call(String name) throws Exception{
+        UiObject Phone_search_field = new UiObject(new UiSelector()
 
+                .resourceId("com.google.android.dialer:id/open_search_bar_text_view"));
+        UiObject click_floting_contcat = new UiObject(new UiSelector()
+                .className("android.widget.TextView").index(1).textContains(name));
+        UiObject Call = new UiObject(new UiSelector()
+                .resourceId("com.google.android.dialer:id/call_to_action"));
+
+        ufMenu_srch_App("Phone");
+        Phone_search_field.click();
+        Phone_search_field.legacySetText(name);
+        click_floting_contcat.click();
+        Log.i(TAG, "* Phone Number " + name);
+        Call.click();
+        Log.i(TAG,"* Click ON CALL");
+        device.pressBack();
+        go_to_idle();
+    }
+    public void Add_contacts_to_favorite(String name) throws Exception{
+        UiObject Favorites = new UiObject(new UiSelector()
+                .resourceId("com.google.android.dialer:id/open_search_bar_text_view"));
+        UiObject Add = new UiObject(new UiSelector()
+                .resourceId("com.google.android.dialer:id/speed_dial_add_button").textContains("Add"));
+        UiObject Phone_search_field = new UiObject(new UiSelector()
+                .resourceId("com.google.android.dialer:id/open_search_bar_text_view"));
+        UiObject click_floting_contcat = new UiObject(new UiSelector()
+                .className("android.widget.TextView").index(1).textContains(name));
+        UiObject Call = new UiObject(new UiSelector()
+                .resourceId("com.google.android.dialer:id/call_to_action"));
+
+        ufMenu_srch_App("Phone");
+        Phone_search_field.click();
+        Phone_search_field.legacySetText(name);
+        click_floting_contcat.click();
+        Log.i(TAG, "* Phone Number " + name);
+        Call.click();
+        Log.i(TAG,"* Click ON CALL");
+        device.pressBack();
+        go_to_idle();
     }
 }

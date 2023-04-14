@@ -212,7 +212,6 @@ public class FT_Camera extends Utility_Functions{
             go_to_idle();
 
             Log.i(TAG, "Test case Completed Successfully");
-
         } catch (Exception e) {
             e.printStackTrace();
             Log.d(TAG, "Test Scenario : Delete Captured Photos Failed...!!!");
