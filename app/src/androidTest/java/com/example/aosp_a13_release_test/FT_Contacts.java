@@ -34,7 +34,7 @@ public class FT_Contacts extends Utility_Functions{
         try {
             int i;
             for (i = 1; i <= 1; i++) {
-                clear_Recent_Apps();
+                //clear_Recent_Apps();
                 //add_label("Team C");
                 //addContacts("Nokia", "Android", "0000000013");
                 //addContacts_withEmail("Nokia", "Android", "0000000013", "abc@gmail.com");
@@ -47,6 +47,9 @@ public class FT_Contacts extends Utility_Functions{
                 //add_contact_wedget("Kallappa Badami");
                 //delete_contact_wedget("Kallappa");
                 //Change_contact_name_display_format();
+                //Share_contact_via_Gmail("Virat Kohli", "abc@gmail.com");
+                //Share_contact_info_via_Message("9945994183", "Md Siraj");
+                Search_with_different_keyword_in_contact();
 
             }
         } catch (Exception e) {
@@ -572,13 +575,78 @@ public class FT_Contacts extends Utility_Functions{
 
     }
 
-    /*public void Share_contact_info_via_Message(String mobileNo, String Contactname) throws Exception{
+    public void Share_contact_via_Gmail(String fname,String _to)throws Exception{
         UiObject SrchCntct = new UiObject(new UiSelector()
                 .text(AOSP_13_CONTACTS_search_cntcts_TXT));
         UiObject EnterCntatName = new UiObject(new UiSelector()
                 .resourceId(AOSP_13_CONTACTS_search_enter_cntcts_RID));
         UiObject first_floating_contcat = new UiObject(new UiSelector()
-                .resourceId(AOSP_13_CONTACTS_Search_floating_contact_RID).index(1).textContains(Contactname));
+                .resourceId(AOSP_13_CONTACTS_Search_floating_contact_RID).index(1).textContains(fname));
+        UiObject More_opt = new UiObject(new UiSelector()
+                .description("More options"));
+        UiObject Share = new UiObject(new UiSelector()
+                .text("Share"));
+        UiObject Continue = new UiObject(new UiSelector()
+                .text("Continue"));
+        UiObject via_Gmail = new UiObject(new UiSelector()
+                .text("Gmail"));
+        UiObject to = new UiObject(new UiSelector()
+                .className("android.widget.EditText").index(0));
+        UiObject Subject = new UiObject(new UiSelector()
+                .text("Subject"));
+        UiObject send = new UiObject(new UiSelector()
+                .description("Send"));
+        UiObject No_contacts_yet = new UiObject(new UiSelector()
+                .text("No contacts yet"));
+        UiObject No_results = new UiObject(new UiSelector()
+                .text("No results"));
+        UiObject close = new UiObject(new UiSelector()
+                .resourceId("com.google.android.contacts:id/og_apd_ring_view"));
+        ufMenu_srch_App("Contacts");
+        if (No_contacts_yet.exists()){
+            Log.i(TAG, "No Contacts available to delete");
+        }else {
+            SrchCntct.click();
+            Log.i(TAG,"* Go to Search Contact");
+            if(close.exists()){
+                close.click();
+            }
+
+            EnterCntatName.legacySetText(fname);
+            Log.i(TAG,"* Enter Contact name to Search :" + fname);
+            if (No_results.exists()){
+                Log.i(TAG,"No results found for the searched contact : " + fname);
+            }else if(first_floating_contcat.getText().equals(fname)) {
+                first_floating_contcat.click();
+                Log.i(TAG,"* Select 1st Floating Contact in Search list");
+                More_opt.click();
+                Log.i(TAG,"* Click on More Option in selected contact");
+                Share.click();
+                Log.i(TAG,"* Click on Delete");
+                Continue.click();
+                Log.i(TAG,"* click on Continue");
+                via_Gmail.click();
+                Log.i(TAG,"* click on gmail");
+                //to.click();
+                to.setText(_to);
+                device.pressEnter();
+                Subject.setText("Sharing contact via mail");
+                send.click();
+            }else{
+                Log.i(TAG, "* No Matching Contacts available to delete");
+            }
+        }
+        device.pressBack();
+        go_to_idle();
+    }
+
+    public void Share_contact_info_via_Message(String mobileNo, String fname) throws Exception{
+        UiObject SrchCntct = new UiObject(new UiSelector()
+                .text(AOSP_13_CONTACTS_search_cntcts_TXT));
+        UiObject EnterCntatName = new UiObject(new UiSelector()
+                .resourceId(AOSP_13_CONTACTS_search_enter_cntcts_RID));
+        UiObject first_floating_contcat = new UiObject(new UiSelector()
+                .resourceId(AOSP_13_CONTACTS_Search_floating_contact_RID).index(1).textContains(fname));
         UiObject More_opt = new UiObject(new UiSelector()
                 .description("More options"));
         UiObject Share = new UiObject(new UiSelector()
@@ -589,19 +657,27 @@ public class FT_Contacts extends Utility_Functions{
                 .text("Messages"));
         UiObject newMessage = new UiObject(new UiSelector()
                 .text("New message"));
-        UiObject t = new UiObject(new UiSelector()
-                .text("New message"));
+        UiObject to = new UiObject(new UiSelector()
+                .textContains("Type a name, phone number, or email"));
         UiObject No_contacts_yet = new UiObject(new UiSelector()
                 .text("No contacts yet"));
         UiObject No_results = new UiObject(new UiSelector()
                 .text("No results"));
+        UiObject close = new UiObject(new UiSelector()
+                .resourceId("com.google.android.contacts:id/og_apd_ring_view"));
+        UiObject send_to_custom = new UiObject(new UiSelector()
+                .resourceId("com.google.android.apps.messaging:id/contact_picker_create_group"));
+
         ufMenu_srch_App("Contacts");
         if (No_contacts_yet.exists()){
             Log.i(TAG, "No Contacts available to delete");
         }else {
             SrchCntct.click();
             Log.i(TAG,"* Go to Search Contact");
-            EnterCntatName.legacySetText();
+            if (close.exists()){
+                close.click();
+            }
+            EnterCntatName.legacySetText(fname);
             Log.i(TAG,"* Enter Contact name to Search :" + fname);
             if (No_results.exists()){
                 Log.i(TAG,"No results found for the searched contact : " + fname);
@@ -610,10 +686,19 @@ public class FT_Contacts extends Utility_Functions{
                 Log.i(TAG,"* Select 1st Floating Contact in Search list");
                 More_opt.click();
                 Log.i(TAG,"* Click on More Option in selected contact");
-                delete.click();
-                Log.i(TAG,"* Click on Delete");
-                popup_delete.click();
-                Log.i(TAG,"* Again click on Move to trash");
+                Share.click();
+                Log.i(TAG,"* Click on share");
+                Continue.click();
+                Log.i(TAG,"* Click on continue");
+                Messages_App.click();
+                Log.i(TAG,"* select message app");
+                newMessage.click();
+                Log.i(TAG,"* select New message");
+                to.setText(mobileNo);
+                Log.i(TAG,"* add phone number");
+                send_to_custom.click();
+
+
             }else{
                 Log.i(TAG, "No Matching Contacts available to delete");
             }
@@ -622,5 +707,47 @@ public class FT_Contacts extends Utility_Functions{
         go_to_idle();
     }
 
-     */
+    public void Search_with_different_keyword_in_contact()throws Exception{
+        UiObject SrchCntct = new UiObject(new UiSelector()
+                .text(AOSP_13_CONTACTS_search_cntcts_TXT));
+        UiObject EnterCntatName = new UiObject(new UiSelector()
+                .resourceId(AOSP_13_CONTACTS_search_enter_cntcts_RID));
+        UiObject Edit_contact = new UiObject(new UiSelector()
+                .description("Edit contact"));
+        UiObject delete = new UiObject(new UiSelector()
+                .text("Delete"));
+        UiObject Save = new UiObject(new UiSelector()
+                .text("Save"));
+        UiObject No_contacts_yet = new UiObject(new UiSelector()
+                .text("No contacts yet"));
+        UiObject No_results = new UiObject(new UiSelector()
+                .text("No results"));
+        UiObject close = new UiObject(new UiSelector()
+                .resourceId("com.google.android.contacts:id/og_apd_ring_view"));
+        ufMenu_srch_App("Contacts");
+        if (No_contacts_yet.exists()){
+            Log.i(TAG, "No Contacts available to delete");
+        }else {
+            SrchCntct.click();
+            Log.i(TAG,"* Go to Search Contact");
+            String[] strAr = {"Ani", "Sam", "Joe","1234567889","Virat", "Kohli"};
+            for (int i=0; i<strAr.length; i++){
+               if (close.exists()){
+                    close.click();
+                }
+                EnterCntatName.legacySetText(strAr[i]);
+                Log.i(TAG,"* Enter Contact name to Search :" + strAr[i]);
+            }
+            if (close.exists()){
+                close.click();
+                device.pressBack();
+            }
+                device.pressBack();
+        }
+
+        device.pressBack();
+        go_to_idle();
+
+    }
+
 }
