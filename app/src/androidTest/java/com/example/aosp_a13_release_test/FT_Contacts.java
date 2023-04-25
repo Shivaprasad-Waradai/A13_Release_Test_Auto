@@ -89,7 +89,7 @@ public class FT_Contacts extends Utility_Functions{
         device.pressBack();
         go_to_idle();
 
-    }
+    } //TSCA-3215 & TSCA-3214
     public void addContacts_withEmail(String fname, String lname, String Pno, String email)throws Exception{
         UiObject AddBtn = new UiObject(new UiSelector()
                 .description(AOSP_13_CONTACTS_add_contact_btn_CD));
@@ -170,7 +170,7 @@ public class FT_Contacts extends Utility_Functions{
         device.pressBack();
         go_to_idle();
 
-    }
+    } //TSCA-3229 & TSCA-3228
     public void editContact(String fname, String newFname)throws Exception{
         UiObject SrchCntct = new UiObject(new UiSelector()
                 .text(AOSP_13_CONTACTS_search_cntcts_TXT));
@@ -216,7 +216,7 @@ public class FT_Contacts extends Utility_Functions{
         device.pressBack();
         go_to_idle();
 
-    }
+    } //TSCA-3223 & TSCA-3222
     public void call_from_contacts(String name)throws Exception{
         UiObject SrchCntct = new UiObject(new UiSelector()
                 .text(AOSP_13_CONTACTS_search_cntcts_TXT));
@@ -261,7 +261,7 @@ public class FT_Contacts extends Utility_Functions{
         device.pressBack();
         go_to_idle();
 
-    }
+    } //TSCA-3235
     public void send_sms_from_contacts(String name, String shortsms)throws Exception{
         UiObject SrchCntct = new UiObject(new UiSelector()
                 .text(AOSP_13_CONTACTS_search_cntcts_TXT));
@@ -454,7 +454,7 @@ public class FT_Contacts extends Utility_Functions{
         device.pressBack();
         go_to_idle();
 
-    }
+    }// TSCA-3266
     public void delete_contact_wedget(String name) throws Exception{
         UiObject contct = new UiObject(new UiSelector()
                 .descriptionContains(name));
@@ -465,7 +465,7 @@ public class FT_Contacts extends Utility_Functions{
         contct.waitForExists(2000);
         contct.dragTo(535,165,50);
         device.pressHome();
-    }
+    }// TSCA-3266
     public void Change_contact_name_display_format()throws Exception{
         UiObject google_Acc_symbol = new UiObject(new UiSelector()
                 .resourceId("com.google.android.contacts:id/og_apd_internal_image_view"));
@@ -511,8 +511,7 @@ public class FT_Contacts extends Utility_Functions{
         First_name_first.click();
         device.pressBack();
         go_to_idle();
-    }
-
+    } //TSCA-3249
     public void add_label(String label)throws Exception{
         UiObject Navigation_drawer = new UiObject(new UiSelector()
                 .description(AOSP_13_CONTACTS_s_navi_drawer_CD));
@@ -549,7 +548,7 @@ public class FT_Contacts extends Utility_Functions{
         Ok.click();
         device.pressBack();
         go_to_idle();
-    }
+    }// TSCA-3239
     public void delete_label(String label)throws Exception{
 
         try{
@@ -573,8 +572,7 @@ public class FT_Contacts extends Utility_Functions{
             go_to_idle();
         }
 
-    }
-
+    } //TSCA-3239
     public void Share_contact_via_Gmail(String fname,String _to)throws Exception{
         UiObject SrchCntct = new UiObject(new UiSelector()
                 .text(AOSP_13_CONTACTS_search_cntcts_TXT));
@@ -638,8 +636,7 @@ public class FT_Contacts extends Utility_Functions{
         }
         device.pressBack();
         go_to_idle();
-    }
-
+    } //TSCA-3232
     public void Share_contact_info_via_Message(String mobileNo, String fname) throws Exception{
         UiObject SrchCntct = new UiObject(new UiSelector()
                 .text(AOSP_13_CONTACTS_search_cntcts_TXT));
@@ -706,7 +703,6 @@ public class FT_Contacts extends Utility_Functions{
         device.pressBack();
         go_to_idle();
     }
-
     public void Search_with_different_keyword_in_contact()throws Exception{
         UiObject SrchCntct = new UiObject(new UiSelector()
                 .text(AOSP_13_CONTACTS_search_cntcts_TXT));
@@ -748,6 +744,103 @@ public class FT_Contacts extends Utility_Functions{
         device.pressBack();
         go_to_idle();
 
+    } //TSCA-971
+
+    public void Add_contact_from_Message(String to_mobileno, String fname) throws Exception{
+        UiObject SrchCntct = new UiObject(new UiSelector()
+                .text(AOSP_13_CONTACTS_search_cntcts_TXT));
+        UiObject EnterCntatName = new UiObject(new UiSelector()
+                .resourceId(AOSP_13_CONTACTS_search_enter_cntcts_RID));
+        UiObject first_floating_contcat = new UiObject(new UiSelector()
+                .resourceId(AOSP_13_CONTACTS_Search_floating_contact_RID).index(1).textContains(fname));
+        UiObject More_opt = new UiObject(new UiSelector()
+                .description("More conversation options"));
+        UiObject AddContact = new UiObject(new UiSelector()
+                .text("Add Contact"));
+        UiObject AddtoContact = new UiObject(new UiSelector()
+                .text("Add to contacts"));
+
+
+        UiObject create_a_new_contact = new UiObject(new UiSelector()
+                .text("Create a new contact"));
+        UiObject Messages_App = new UiObject(new UiSelector()
+                .text("Messages"));
+        UiObject newMessage = new UiObject(new UiSelector()
+                .text("New message"));
+        UiObject to = new UiObject(new UiSelector()
+                .textContains("Type a name, phone number, or email"));
+        UiObject No_contacts_yet = new UiObject(new UiSelector()
+                .text("No contacts yet"));
+        UiObject No_results = new UiObject(new UiSelector()
+                .text("No results"));
+        UiObject close = new UiObject(new UiSelector()
+                .resourceId("com.google.android.contacts:id/og_apd_ring_view"));
+        UiObject send_to_custom = new UiObject(new UiSelector()
+                .resourceId("com.google.android.apps.messaging:id/contact_picker_create_group"));
+        UiObject Start_chat = new UiObject(new UiSelector()
+                .text("Start chat"));
+        UiObject txt_msg = new UiObject(new UiSelector()
+                .text("Text message"));
+        UiObject send_key = new UiObject(new UiSelector()
+                .text("Text message"));
+        UiObject non_contact = new UiObject(new UiSelector()
+                .textContains(to_mobileno));
+
+        ufMenu_srch_App("Messages");
+        Start_chat.click();
+        device.pressBack();
+        device.pressBack();
+        device.pressBack();
+        go_to_idle();
+        ufMenu_srch_App("Messages");
+        non_contact.click();
+        More_opt.click();
+        AddContact.click();
+        AddtoContact.click();
+        create_a_new_contact.click();
+
+        to.setText(to_mobileno);
+        send_to_custom.click();
+        txt_msg.setText("Hello, have a good time..!!");
+        send_key.click();
+
+        if (No_contacts_yet.exists()){
+            Log.i(TAG, "No Contacts available to delete");
+        }else {
+            SrchCntct.click();
+            Log.i(TAG,"* Go to Search Contact");
+            if (close.exists()){
+                close.click();
+            }
+            EnterCntatName.legacySetText(fname);
+            Log.i(TAG,"* Enter Contact name to Search :" + fname);
+            if (No_results.exists()){
+                Log.i(TAG,"No results found for the searched contact : " + fname);
+            }else if(first_floating_contcat.getText().equals(fname)) {
+                first_floating_contcat.click();
+                Log.i(TAG,"* Select 1st Floating Contact in Search list");
+                More_opt.click();
+                Log.i(TAG,"* Click on More Option in selected contact");
+               // Share.click();
+                Log.i(TAG,"* Click on share");
+               // Continue.click();
+                Log.i(TAG,"* Click on continue");
+                Messages_App.click();
+                Log.i(TAG,"* select message app");
+                newMessage.click();
+                Log.i(TAG,"* select New message");
+                to.setText(to_mobileno);
+                Log.i(TAG,"* add phone number");
+                send_to_custom.click();
+
+
+            }else{
+                Log.i(TAG, "No Matching Contacts available to delete");
+            }
+        }
+        device.pressBack();
+        go_to_idle();
     }
+
 
 }

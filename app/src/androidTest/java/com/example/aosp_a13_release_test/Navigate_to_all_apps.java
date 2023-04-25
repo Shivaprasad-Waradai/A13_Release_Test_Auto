@@ -30,10 +30,11 @@ import org.junit.runner.RunWith;
 import java.io.IOException;
 
 @RunWith(AndroidJUnit4.class)
-public class Navigate_to_all_apps extends Utility_Functions{
+public class Navigate_to_all_apps extends Utility_Functions {
 
     private UiDevice device;
     private static final String TAG = "TEST";
+
     @Before
     public void setUp() throws Exception {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
@@ -56,13 +57,14 @@ public class Navigate_to_all_apps extends Utility_Functions{
                 openClose_Apps("Phone");
                 openClose_Apps("Settings");
                  */
-            Log.i(TAG, "* Test Ended");
+                Log.i(TAG, "* Test Ended");
             }
         } catch (Exception e) {
             Log.d(TAG, "* Test Failed...");
             throw new AssertionFailedError();
         }
     }
+
     @Test
     public void Mst_Manu_structure() throws Exception {
         try {
@@ -78,6 +80,7 @@ public class Navigate_to_all_apps extends Utility_Functions{
             throw new AssertionFailedError();
         }
     }
+
     @Test
     public void Monkey_run() throws Exception {
 
@@ -93,6 +96,7 @@ public class Navigate_to_all_apps extends Utility_Functions{
             throw new AssertionFailedError();
         }
     }
+
     public void mst_Settings() throws Exception {
         try {
 
@@ -115,27 +119,27 @@ public class Navigate_to_all_apps extends Utility_Functions{
                     .text(AOSP_13_SETTINGS_battery_TXT));
             UiObject Display = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_display_TXT));
-            UiObject Sound_vib  = new UiObject(new UiSelector()
+            UiObject Sound_vib = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_Snd_vib_TXT));
-            UiObject Walpaper  = new UiObject(new UiSelector()
+            UiObject Walpaper = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_wallpaper_TXT));
-            UiObject Security  = new UiObject(new UiSelector()
+            UiObject Security = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_Security_TXT));
-            UiObject Accessibility  = new UiObject(new UiSelector()
+            UiObject Accessibility = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_accessibility_TXT));
-            UiObject Privacy  = new UiObject(new UiSelector()
+            UiObject Privacy = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_Privacy_TXT));
-            UiObject Location  = new UiObject(new UiSelector()
+            UiObject Location = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_Location_TXT));
-            UiObject Safety  = new UiObject(new UiSelector()
+            UiObject Safety = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_safety_emergency_TXT));
-            UiObject D_well  = new UiObject(new UiSelector()
+            UiObject D_well = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_Digi_wellbeing_TXT));
-            UiObject Google  = new UiObject(new UiSelector()
+            UiObject Google = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_Google_TXT));
-            UiObject System  = new UiObject(new UiSelector()
+            UiObject System = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_system_TXT));
-            UiObject About_phone  = new UiObject(new UiSelector()
+            UiObject About_phone = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_About_phone_TXT));
             UiObject password_Acc = new UiObject(new UiSelector()
                     .text(AOSP_13_SETTINGS_paswrd_accs_TXT));
@@ -224,6 +228,7 @@ public class Navigate_to_all_apps extends Utility_Functions{
             go_to_idle();
         }
     }
+
     public void monkey_run() throws Exception {
         device.executeShellCommand("monkey -p com.android.camera2 -v 5000");
         device.executeShellCommand("monkey -p com.google.android.apps.messaging -v 5000");
@@ -236,8 +241,9 @@ public class Navigate_to_all_apps extends Utility_Functions{
         device.pressBack();
         go_to_idle();
     }
-    public void mst_Clock() throws Exception{
-        try{
+
+    public void mst_Clock() throws Exception {
+        try {
             go_to_idle();
 
             ufMenu_srch_App("Clock");
@@ -250,8 +256,6 @@ public class Navigate_to_all_apps extends Utility_Functions{
                     .text("Alarm"));
             tab_Alarm.click();
             System.out.println("Clicked on Alarm Tab");
-
-
 
 
             UiObject tab_Timer = new UiObject(new UiSelector()
@@ -339,12 +343,13 @@ public class Navigate_to_all_apps extends Utility_Functions{
 
             System.out.println("**********************mst_Clock PASSED********************");
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("**********************mst_Clock FAILED********************");
         }
     }
-    public void mst_Contacts() throws Exception{
+
+    public void mst_Contacts() throws Exception {
 
         try {
 
@@ -432,7 +437,7 @@ public class Navigate_to_all_apps extends Utility_Functions{
             Thread.sleep(3000);
 
             System.out.println("**********************mst_Contacts PASSED********************");
-        }catch (Exception e){
+        } catch (Exception e) {
 
             //device.takeScreenshot( );
             e.printStackTrace();
@@ -443,7 +448,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
 
 
     }
-    public void mst_Messages() throws Exception{
+
+    public void mst_Messages() throws Exception {
         try {
             device.pressBack();
             go_to_idle();
@@ -487,7 +493,7 @@ public class Navigate_to_all_apps extends Utility_Functions{
             device.pressBack();
             go_to_idle();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             device.pressBack();
             go_to_idle();
@@ -495,7 +501,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
 
         }
     }
-    public void mst_Phone() throws Exception{
+
+    public void mst_Phone() throws Exception {
 
         try {
 //            UiObject menu_Mark = new UiObject(new UiSelector()
@@ -579,7 +586,7 @@ public class Navigate_to_all_apps extends Utility_Functions{
 
             UiObject Popup_Cancle = new UiObject(new UiSelector()
                     .resourceId("android:id/button2"));
-            if(Popup_Cancle.exists()) {
+            if (Popup_Cancle.exists()) {
                 Popup_Cancle.click();
             }
             device.pressBack();
@@ -693,7 +700,7 @@ public class Navigate_to_all_apps extends Utility_Functions{
             device.pressHome();
             System.out.println("**********************mst_Phone PASSED********************");
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("**********************mst_Phone FAILED********************");
 
@@ -701,7 +708,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
             device.pressHome();
         }
     }
-    public void mst_Calculator() throws Exception{
+
+    public void mst_Calculator() throws Exception {
         // Menu Navigation Stability test on Calculator
         try {
 
@@ -762,14 +770,16 @@ public class Navigate_to_all_apps extends Utility_Functions{
 
             //Go to Send FeedBack and return to Main menu
             device.pressBack();
-            device.pressHome();System.out.println("Returned to Home Screen");
+            device.pressHome();
+            System.out.println("Returned to Home Screen");
 
             ufMenu_srch_App("Calculator");
             System.out.println("Opened the Calculator App");
 
             more_Opt.click();
             Thread.sleep(1000);
-            send_Feedback.click();System.out.println("Go to Send FeedBack and return to Main menu");
+            send_Feedback.click();
+            System.out.println("Go to Send FeedBack and return to Main menu");
             Thread.sleep(1000);
             navigate_Up.click();
             Thread.sleep(1000);
@@ -777,7 +787,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
 
             // Go to Help in Calculator and Navigate to each Help option
             device.pressBack();
-            device.pressHome();System.out.println("Returned to Home Screen");
+            device.pressHome();
+            System.out.println("Returned to Home Screen");
 
             ufMenu_srch_App("Calculator");
             System.out.println("Opened the Calculator App");
@@ -787,7 +798,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
             help.click();
             Thread.sleep(1000);
             article0.click();
-            device.pressBack();System.out.println("Go to Help in Calculator and Navigate to each Help option");
+            device.pressBack();
+            System.out.println("Go to Help in Calculator and Navigate to each Help option");
 
 
             device.pressBack();
@@ -799,7 +811,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
 
             more_Opt.click();
             Thread.sleep(1000);
-            help.click();System.out.println("Opened the Help Option");
+            help.click();
+            System.out.println("Opened the Help Option");
             Thread.sleep(1000);
             article1.click();
             device.pressBack();
@@ -812,7 +825,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
 
             more_Opt.click();
             Thread.sleep(1000);
-            help.click();System.out.println("Opened the Help Option");
+            help.click();
+            System.out.println("Opened the Help Option");
             Thread.sleep(1000);
             article2.click();
             device.pressBack();
@@ -825,7 +839,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
 
             more_Opt.click();
             Thread.sleep(1000);
-            help.click();System.out.println("Opened the Help Option");
+            help.click();
+            System.out.println("Opened the Help Option");
             Thread.sleep(1000);
             article3.click();
             device.pressBack();
@@ -838,7 +853,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
 
             more_Opt.click();
             Thread.sleep(1000);
-            help.click();System.out.println("Opened the Help Option");
+            help.click();
+            System.out.println("Opened the Help Option");
             Thread.sleep(1000);
             article4.click();
             device.pressBack();
@@ -852,7 +868,8 @@ public class Navigate_to_all_apps extends Utility_Functions{
 
             more_Opt.click();
             Thread.sleep(1000);
-            help.click();System.out.println("Opened the Help Option");
+            help.click();
+            System.out.println("Opened the Help Option");
             Thread.sleep(1000);
             help_send_Feedback.click();
             navigate_Up.click();
@@ -886,7 +903,7 @@ public class Navigate_to_all_apps extends Utility_Functions{
             Thread.sleep(1000);
             System.out.println("***************** mst_Calculator PASSED *****************");
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
             System.out.println("***************** mst_Calculator FAILED *****************");
