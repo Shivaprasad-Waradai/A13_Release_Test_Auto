@@ -26,9 +26,10 @@ public class FT_Phone extends Utility_Functions{
         try {
             int i;
             for (i = 1; i <= 1; i++) {
-                //dial_a_number_n_call("9945994183");
-              //  dial_a_number_n_save("9876543210", "Kallappa", "Badami");
-                Search_contact_n_call("Kallappa");
+                 //dial_a_number_n_call("9945994183");
+                // dial_a_number_n_save("9876543210", "Kallappa", "Badami");
+               // Search_contact_n_call("Kallappa");
+                Add_contacts_to_favorite("Ajinkya");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -109,25 +110,32 @@ public class FT_Phone extends Utility_Functions{
         go_to_idle();
     }
     public void Add_contacts_to_favorite(String name) throws Exception{
-        UiObject Favorites = new UiObject(new UiSelector()
-                .resourceId("com.google.android.dialer:id/open_search_bar_text_view"));
-        UiObject Add = new UiObject(new UiSelector()
-                .resourceId("com.google.android.dialer:id/speed_dial_add_button").textContains("Add"));
+        UiObject Favoritescontact = new UiObject(new UiSelector()
+                .resourceId("com.google.android.dialer:id/name").textContains(name));
+        UiObject Addforites = new UiObject(new UiSelector()
+                .descriptionContains("Add to favorites"));
         UiObject Phone_search_field = new UiObject(new UiSelector()
                 .resourceId("com.google.android.dialer:id/open_search_bar_text_view"));
         UiObject click_floting_contcat = new UiObject(new UiSelector()
-                .className("android.widget.TextView").index(1).textContains(name));
-        UiObject Call = new UiObject(new UiSelector()
-                .resourceId("com.google.android.dialer:id/call_to_action"));
+                .resourceId("com.google.android.dialer:id/photo").descriptionContains(name));
+        UiObject Favorites = new UiObject(new UiSelector()
+                .resourceId("com.google.android.dialer:id/navigation_bar_item_icon_view"));
+
+
 
         ufMenu_srch_App("Phone");
         Phone_search_field.click();
         Phone_search_field.legacySetText(name);
         click_floting_contcat.click();
         Log.i(TAG, "* Phone Number " + name);
-        Call.click();
-        Log.i(TAG,"* Click ON CALL");
+        Addforites.click();
+        Log.i(TAG,"* Selected contact added to fevorites" );
         device.pressBack();
         go_to_idle();
+        ufMenu_srch_App("Phone");
+        Favorites.click();
+        Favoritescontact.click();
+
+
     }
 }

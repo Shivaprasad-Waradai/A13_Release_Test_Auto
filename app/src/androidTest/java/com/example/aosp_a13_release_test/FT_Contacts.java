@@ -34,7 +34,7 @@ public class FT_Contacts extends Utility_Functions{
         try {
             int i;
             for (i = 1; i <= 1; i++) {
-                //clear_Recent_Apps();
+                //clear_Recent_Apps(); //app getting crash
                 //add_label("Team C");
                 //addContacts("Nokia", "Android", "0000000013");
                 //addContacts_withEmail("Nokia", "Android", "0000000013", "abc@gmail.com");
@@ -745,7 +745,6 @@ public class FT_Contacts extends Utility_Functions{
         go_to_idle();
 
     } //TSCA-971
-
     public void Add_contact_from_Message(String to_mobileno, String fname) throws Exception{
         UiObject SrchCntct = new UiObject(new UiSelector()
                 .text(AOSP_13_CONTACTS_search_cntcts_TXT));
@@ -785,6 +784,12 @@ public class FT_Contacts extends Utility_Functions{
                 .text("Text message"));
         UiObject non_contact = new UiObject(new UiSelector()
                 .textContains(to_mobileno));
+        String mb_no_split;
+        to_mobileno.length();
+        for(int i=0;i<=5;i=+5 ){
+
+        }
+
 
         ufMenu_srch_App("Messages");
         Start_chat.click();

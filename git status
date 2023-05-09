@@ -1,0 +1,128 @@
+[1mdiff --git a/.idea/androidTestResultsUserPreferences.xml b/.idea/androidTestResultsUserPreferences.xml[m
+[1mindex 2057643..d9612f6 100644[m
+[1m--- a/.idea/androidTestResultsUserPreferences.xml[m
+[1m+++ b/.idea/androidTestResultsUserPreferences.xml[m
+[36m@@ -37,7 +37,9 @@[m
+               <option name="preferredColumnWidths">[m
+                 <map>[m
+                   <entry key="B2NGAA37C2501496" value="120" />[m
+[32m+[m[32m                  <entry key="DRGGAD2831200338" value="120" />[m
+                   <entry key="Duration" value="90" />[m
+[32m+[m[32m                  <entry key="HMD Global&#10; Nokia 6.1 Plus" value="120" />[m
+                   <entry key="HMD Global&#10; Nokia 7 plus" value="120" />[m
+                   <entry key="Tests" value="360" />[m
+                 </map>[m
+[36m@@ -110,7 +112,9 @@[m
+               <option name="preferredColumnWidths">[m
+                 <map>[m
+                   <entry key="B2NGAA37C2501496" value="120" />[m
+[32m+[m[32m                  <entry key="DRGGAD2831200338" value="120" />[m
+                   <entry key="Duration" value="90" />[m
+[32m+[m[32m                  <entry key="HMD Global&#10; Nokia 6.1 Plus" value="120" />[m
+                   <entry key="HMD Global&#10; Nokia 7 plus" value="120" />[m
+                   <entry key="Tests" value="360" />[m
+                 </map>[m
+[36m@@ -124,7 +128,9 @@[m
+               <option name="preferredColumnWidths">[m
+                 <map>[m
+                   <entry key="B2NGAA37C2501496" value="120" />[m
+[32m+[m[32m                  <entry key="DRGGAD2831200338" value="120" />[m
+                   <entry key="Duration" value="90" />[m
+[32m+[m[32m                  <entry key="HMD Global&#10; Nokia 6.1 Plus" value="120" />[m
+                   <entry key="HMD Global&#10; Nokia 7 plus" value="120" />[m
+                   <entry key="Tests" value="360" />[m
+                 </map>[m
+[1mdiff --git a/app/src/androidTest/java/com/example/aosp_a13_release_test/FT_Contacts.java b/app/src/androidTest/java/com/example/aosp_a13_release_test/FT_Contacts.java[m
+[1mindex 258149a..7db2cce 100644[m
+[1m--- a/app/src/androidTest/java/com/example/aosp_a13_release_test/FT_Contacts.java[m
+[1m+++ b/app/src/androidTest/java/com/example/aosp_a13_release_test/FT_Contacts.java[m
+[36m@@ -34,7 +34,7 @@[m [mpublic class FT_Contacts extends Utility_Functions{[m
+         try {[m
+             int i;[m
+             for (i = 1; i <= 1; i++) {[m
+[31m-                //clear_Recent_Apps();[m
+[32m+[m[32m                //clear_Recent_Apps(); //app getting crash[m
+                 //add_label("Team C");[m
+                 //addContacts("Nokia", "Android", "0000000013");[m
+                 //addContacts_withEmail("Nokia", "Android", "0000000013", "abc@gmail.com");[m
+[36m@@ -745,7 +745,6 @@[m [mpublic class FT_Contacts extends Utility_Functions{[m
+         go_to_idle();[m
+ [m
+     } //TSCA-971[m
+[31m-[m
+     public void Add_contact_from_Message(String to_mobileno, String fname) throws Exception{[m
+         UiObject SrchCntct = new UiObject(new UiSelector()[m
+                 .text(AOSP_13_CONTACTS_search_cntcts_TXT));[m
+[36m@@ -785,6 +784,12 @@[m [mpublic class FT_Contacts extends Utility_Functions{[m
+                 .text("Text message"));[m
+         UiObject non_contact = new UiObject(new UiSelector()[m
+                 .textContains(to_mobileno));[m
+[32m+[m[32m        String mb_no_split;[m
+[32m+[m[32m        to_mobileno.length();[m
+[32m+[m[32m        for(int i=0;i<=5;i=+5 ){[m
+[32m+[m
+[32m+[m[32m        }[m
+[32m+[m
+ [m
+         ufMenu_srch_App("Messages");[m
+         Start_chat.click();[m
+[1mdiff --git a/app/src/androidTest/java/com/example/aosp_a13_release_test/FT_Phone.java b/app/src/androidTest/java/com/example/aosp_a13_release_test/FT_Phone.java[m
+[1mindex ab4fa89..807365d 100644[m
+[1m--- a/app/src/androidTest/java/com/example/aosp_a13_release_test/FT_Phone.java[m
+[1m+++ b/app/src/androidTest/java/com/example/aosp_a13_release_test/FT_Phone.java[m
+[36m@@ -26,9 +26,10 @@[m [mpublic class FT_Phone extends Utility_Functions{[m
+         try {[m
+             int i;[m
+             for (i = 1; i <= 1; i++) {[m
+[31m-                //dial_a_number_n_call("9945994183");[m
+[31m-              //  dial_a_number_n_save("9876543210", "Kallappa", "Badami");[m
+[31m-                Search_contact_n_call("Kallappa");[m
+[32m+[m[32m                 //dial_a_number_n_call("9945994183");[m
+[32m+[m[32m                // dial_a_number_n_save("9876543210", "Kallappa", "Badami");[m
+[32m+[m[32m               // Search_contact_n_call("Kallappa");[m
+[32m+[m[32m                Add_contacts_to_favorite("Ajinkya");[m
+             }[m
+         } catch (Exception e) {[m
+             e.printStackTrace();[m
+[36m@@ -109,25 +110,32 @@[m [mpublic class FT_Phone extends Utility_Functions{[m
+         go_to_idle();[m
+     }[m
+     public void Add_contacts_to_favorite(String name) throws Exception{[m
+[31m-        UiObject Favorites = new UiObject(new UiSelector()[m
+[31m-                .resourceId("com.google.android.dialer:id/open_search_bar_text_view"));[m
+[31m-        UiObject Add = new UiObject(new UiSelector()[m
+[31m-                .resourceId("com.google.android.dialer:id/speed_dial_add_button").textContains("Add"));[m
+[32m+[m[32m        UiObject Favoritescontact = new UiObject(new UiSelector()[m
+[32m+[m[32m                .resourceId("com.google.android.dialer:id/name").textContains(name));[m
+[32m+[m[32m        UiObject Addforites = new UiObject(new UiSelector()[m
+[32m+[m[32m                .descriptionContains("Add to favorites"));[m
+         UiObject Phone_search_field = new UiObject(new UiSelector()[m
+                 .resourceId("com.google.android.dialer:id/open_search_bar_text_view"));[m
+         UiObject click_floting_contcat = new UiObject(new UiSelector()[m
+[31m-                .className("android.widget.TextView").index(1).textContains(name));[m
+[31m-        UiObject Call = new UiObject(new UiSelector()[m
+[31m-                .resourceId("com.google.android.dialer:id/call_to_action"));[m
+[32m+[m[32m                .resourceId("com.google.android.dialer:id/photo").descriptionContains(name));[m
+[32m+[m[32m        UiObject Favorites = new UiObject(new UiSelector()[m
+[32m+[m[32m                .resourceId("com.google.android.dialer:id/navigation_bar_item_icon_view"));[m
+[32m+[m
+[32m+[m
+ [m
+         ufMenu_srch_App("Phone");[m
+         Phone_search_field.click();[m
+         Phone_search_field.legacySetText(name);[m
+         click_floting_contcat.click();[m
+         Log.i(TAG, "* Phone Number " + name);[m
+[31m-        Call.click();[m
+[31m-        Log.i(TAG,"* Click ON CALL");[m
+[32m+[m[32m        Addforites.click();[m
+[32m+[m[32m        Log.i(TAG,"* Selected contact added to fevorites" );[m
+         device.pressBack();[m
+         go_to_idle();[m
+[32m+[m[32m        ufMenu_srch_App("Phone");[m
+[32m+[m[32m        Favorites.click();[m
+[32m+[m[32m        Favoritescontact.click();[m
+[32m+[m
+[32m+[m
+     }[m
+ }[m
