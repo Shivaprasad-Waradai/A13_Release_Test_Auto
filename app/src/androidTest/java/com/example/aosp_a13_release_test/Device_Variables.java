@@ -92,6 +92,9 @@ public class Device_Variables {
     String AIT_13_PHONE_TAB_Favourites_CN = "Favourites";
     String AIT_13_PHONE_TAB_Recent_CN = "Recent";
     String AIT_13_PHONE_TAB_Contacts_CN = "Contacts";
+    String AOSP_13_Choose_SIM_for_Call_TXT = "Choose SIM for this call";
+    String AOSP_13_Choose_SIM1_for_Call_CN = "android.widget.LinearLayout";//Index from SIM1 is 0
+    String AOSP_13_Choose_SIM2_for_Call_CN = "android.widget.LinearLayout";//Index from SIM1 is 1
     String AOSP_13_PHONE_save_BTN_RID = "com.google.android.contacts:id/save_button";
 //********************** SETTINGS **********************
 

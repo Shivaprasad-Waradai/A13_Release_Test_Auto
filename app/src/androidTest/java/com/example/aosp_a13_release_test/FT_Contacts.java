@@ -36,7 +36,7 @@ public class FT_Contacts extends Utility_Functions{
             for (i = 1; i <= 1; i++) {
                 //clear_Recent_Apps(); //app getting crash
                 //add_label("Team C");
-                //addContacts("Nokia", "Android", "0000000013");
+                addContacts("Test1", "Android", "9986123584");
                 //addContacts_withEmail("Nokia", "Android", "0000000013", "abc@gmail.com");
                 //editContact("Nokia","AOSP");
                 //send_sms_from_contacts("Virat Kohli", "Hi Virat - The Batsman");
@@ -49,7 +49,7 @@ public class FT_Contacts extends Utility_Functions{
                 //Change_contact_name_display_format();
                 //Share_contact_via_Gmail("Virat Kohli", "abc@gmail.com");
                 //Share_contact_info_via_Message("9945994183", "Md Siraj");
-                Search_with_different_keyword_in_contact();
+                //Search_with_different_keyword_in_contact();
 
             }
         } catch (Exception e) {

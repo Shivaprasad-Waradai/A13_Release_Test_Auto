@@ -41,7 +41,12 @@ public class FT_Phone extends Utility_Functions{
                 .resourceId(AIT_13_PHONE_Dialer_RID));
         UiObject Call = new UiObject(new UiSelector()
                 .resourceId("com.google.android.dialer:id/dialpad_voice_call_button"));
-
+        UiObject ChooseSIM = new UiObject(new UiSelector()
+                .text(AOSP_13_Choose_SIM_for_Call_TXT));
+        UiObject ChooseSIM1 = new UiObject(new UiSelector()
+                .text(AOSP_13_Choose_SIM_for_Call_TXT));
+        UiObject ChooseSIM2 = new UiObject(new UiSelector()
+                .text(AOSP_13_Choose_SIM_for_Call_TXT));
         ufMenu_srch_App("Phone");
         dialer.click();
         int j = PhoneNo.length();
@@ -53,6 +58,10 @@ public class FT_Phone extends Utility_Functions{
         }
         Log.i(TAG, "* Phone Number " + PhoneNo);
         Call.click();
+        if (ChooseSIM.exists()){
+            ChooseSIM1.click();
+        }
+
         Log.i(TAG,"* Click ON CALL");
         device.pressBack();
         go_to_idle();

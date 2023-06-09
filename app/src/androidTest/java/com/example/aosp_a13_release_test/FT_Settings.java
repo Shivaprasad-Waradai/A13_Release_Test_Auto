@@ -31,11 +31,11 @@ public class FT_Settings extends Utility_Functions {
         try {
             int i;
             for (i = 1; i <= 2; i++) {
-                //turnonFlightMode();
+                turnonFlightMode();
                 //Bluetooth_pair_unpair("SP things");
-                //Flash_on_off();
-                //display_brightness_adjust();
-                //change_ringtone_Volume();
+                Flash_on_off();
+                display_brightness_adjust();
+                change_ringtone_Volume();
                 change_ringtone();
             }
         } catch (Exception e) {
